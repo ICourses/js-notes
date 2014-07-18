@@ -1,0 +1,34 @@
+body{
+    padding-left: 300px;
+    padding-top: 30px;
+}
+#title{
+    color: #cd1b3a;
+    font-size: 20px;
+    padding-left: 60px;
+}
+#list div{
+    background-color: rgba(255, 161, 240, 0.34);
+    width: 300px;
+    height: 22px;
+    border: 1px solid #cd1b3a;
+    margin: 2px;
+    padding-left: 10px;
+    position: relative;
+}
+.link, .image{
+    top: 3px;
+    right: 3px;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+}
+.link{
+    position: absolute;
+}
+.image:hover{
+    width: 17px;
+    height: 17px;
+    top: 0px;
+    right: 1px;
+}

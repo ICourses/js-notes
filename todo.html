@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+    <script type="text/javascript" src="todo_script.js"></script>
+    <link rel="stylesheet" href="todo_style.css">
+    <script>
+        window.addEventListener("load",function() {
+            todo.initial({
+                aTegClassName: 'link',
+                imgClassName: 'image',
+                inputId: 'input',
+                buttonId: 'button',
+                listId: 'list'
+            });
+        });
+    </script>
+    <title>ToDo</title>
+</head>
+<body>
+<span id='title'>To Do</span>
+<form>
+    <input type="text" id="input" size="40"><input type="button" id="button" value="OK">
+</form>
+<div id='list'>
+</div>
+
+</body>
+</html>
