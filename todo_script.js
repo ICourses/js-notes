@@ -4,20 +4,9 @@ window.todo = (function(){
 
             function display ( array ){
                 for ( var i=0; i < array.length; i++ ){
-                    var divTeg = document.createElement('div');
-                    divTeg.innerHTML = i+1 + ".  " + array[i] + "<a class=" + settings.aTegClassName +" id='" + i + "'><img class=" + settings.imgClassName +" src='delete.png'></a>";
+                    var divTeg = document.createElement('div');    //i+1 + ".  " +
+                    divTeg.innerHTML =  array[i] + "<a class=" + settings.aTegClassName + "><img class=" + settings.imgClassName +" src='delete.png'></a>";
                     document.getElementById(settings.listId).appendChild(divTeg);
-                }
-            }
-
-            function deleteNote(){
-                var closes = document.getElementsByClassName('link');
-                for(var i = 0; i < closes.length; i++) {
-                    closes[i].addEventListener('click', function(){
-                        array.splice(this.id,1);
-                        document.getElementById(settings.listId).innerHTML = "";
-                        display(array);
-                    });
                 }
             }
 
@@ -29,15 +18,19 @@ window.todo = (function(){
                     document.getElementById(settings.inputId).value = "";
                     document.getElementById(settings.listId).innerHTML = "";
                     display(array);
-                    deleteNote();
                 }
                 else{
                     alert("Enter a note for the entry in the list.");
                 }
             });
 
-            document.getElementById(settings.listId).addEventListener("click", function() {
-                deleteNote();
+            document.getElementById(settings.listId).addEventListener("click", function(event) {
+                if(event.target.className == "image"){
+                    var i = array.indexOf(event.target.parentElement.parentElement.firstChild.textContent);
+                    array.splice(i, 1);
+                    document.getElementById(settings.listId).innerHTML = "";
+                    display(array);
+                }
             });
         }
     }
