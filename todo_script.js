@@ -2,21 +2,41 @@ window.todo = (function(){
     return{
         initial: function(settings){
 
+            function cleanList(){
+                document.getElementById(settings.listId).innerHTML = "";
+            }
+
+            function cleanInput(){
+                document.getElementById(settings.inputId).value = "";
+            }
+
+            function addInArray( val ){
+                array.push( val );
+            }
+
+            function deleteFromArray( text){
+                var i = array.indexOf( text );
+                array.splice(i, 1);
+            }
+            function visualize( str ){
+                var Teg = document.createElement('div');
+                Teg.innerHTML = str + "<a class=" + settings.aTegClassName + "><img class=" + settings.imgClassName +" src='delete.png'></a>";
+                document.getElementById(settings.listId).appendChild(Teg);
+            }
+
             function display ( array ){
                 for ( var i=0; i < array.length; i++ ){
-                    var divTeg = document.createElement('div');    //i+1 + ".  " +
-                    divTeg.innerHTML =  array[i] + "<a class=" + settings.aTegClassName + "><img class=" + settings.imgClassName +" src='delete.png'></a>";
-                    document.getElementById(settings.listId).appendChild(divTeg);
+                    visualize(array[i]);
                 }
             }
 
             var array = [];
 
             document.getElementById(settings.buttonId).addEventListener("click", function() {
-                if (document.getElementById(settings.inputId).value != "") {
-                    array.push(document.getElementById(settings.inputId).value);
-                    document.getElementById(settings.inputId).value = "";
-                    document.getElementById(settings.listId).innerHTML = "";
+                if (document.getElementById(settings.inputId).value) {
+                    addInArray( document.getElementById(settings.inputId).value );
+                    cleanInput();
+                    cleanList();
                     display(array);
                 }
                 else{
@@ -26,9 +46,8 @@ window.todo = (function(){
 
             document.getElementById(settings.listId).addEventListener("click", function(event) {
                 if(event.target.className == "image"){
-                    var i = array.indexOf(event.target.parentElement.parentElement.firstChild.textContent);
-                    array.splice(i, 1);
-                    document.getElementById(settings.listId).innerHTML = "";
+                    deleteFromArray( event.target.parentElement.parentElement.firstChild.textContent );
+                    cleanList();
                     display(array);
                 }
             });
