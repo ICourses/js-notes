@@ -7,7 +7,7 @@ body{
     font-size: 20px;
     padding-left: 60px;
 }
-#list div{
+#list_div{
     background-color: rgba(255, 161, 240, 0.34);
     width: 300px;
     height: 22px;

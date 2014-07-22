@@ -18,10 +18,16 @@ window.todo = (function(){
                 var i = array.indexOf( text );
                 array.splice(i, 1);
             }
+
             function visualize( str ){
                 var Teg = document.createElement('div');
-                Teg.innerHTML = str + "<a class=" + settings.aTegClassName + "><img class=" + settings.imgClassName +" src='delete.png'></a>";
+                Teg.innerHTML = vis();
+                Teg.firstChild.textContent = str;
                 document.getElementById(settings.listId).appendChild(Teg);
+            }
+
+            function vis(){
+                return "<div id='list_div'><a class=" + settings.aTegClassName + "><img class=" + settings.imgClassName +" src=" +settings.image + "></a></div>";
             }
 
             function display ( array ){
