@@ -6,13 +6,16 @@
     <link rel="stylesheet" href="todo_style.css">
     <script>
         window.addEventListener("load",function() {
+
             todo.initial({
-                aTegClassName: 'link',
-                imgClassName: 'image',
+                imageClassName: 'image',
                 inputId: 'input',
                 buttonId: 'button',
                 listId: 'list',
-                image: 'delete.png'
+                vis: function (note) {
+                    return "<div id='list_div'>" + note + "<a class='link'><img class='image' src='delete_black.png'></a></div>";
+                    /*return "<div id='list2_div'>" + note + "<a class='link'><img class='image' src='delete.png'></a></div>";  */
+                }
             });
         });
     </script>
